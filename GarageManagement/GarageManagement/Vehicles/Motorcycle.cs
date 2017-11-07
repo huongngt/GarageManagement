@@ -11,7 +11,11 @@ namespace GarageManagement.Vehicles
     /// </summary>
     public class Motorcycle : Vehicle
     {
+        private int yea;
+        private int maxspeed;
 
+        public int MaxSpeed { get { return maxspeed; } set { maxspeed = value; } }
+        public int Year { get { return yea; } set { yea = value; } }
         //Creating a default constructor
         public Motorcycle(){}
 

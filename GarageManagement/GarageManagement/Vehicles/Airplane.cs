@@ -11,7 +11,15 @@ namespace GarageManagement.Vehicles
     /// </summary>
     public class Airplane : Vehicle
     {
-     
+       private string name; 
+       private string type;
+       private int yea;
+
+
+       public int Year { get { return yea; } set { yea = value; } } 
+       public string Type { get { return type; } set { type = value; } } 
+       public string Name { get { return name; } set { name = value; } }
+
         //Creating a default constructor
         public Airplane(){}
 

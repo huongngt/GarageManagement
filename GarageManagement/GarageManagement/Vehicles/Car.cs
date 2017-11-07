@@ -11,6 +11,12 @@ namespace GarageManagement.Vehicles
     /// </summary>
     public class Car : Vehicle  
     {
+        private string model;
+        private string color;
+
+
+        public string Model { get { return model; } set { model = value; } }
+        public string Color { get { return color; } set { color = value; } }
         //Creating a default constructor
         public Car(){}
 

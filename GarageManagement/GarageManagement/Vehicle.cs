@@ -11,29 +11,24 @@ namespace GarageManagement
     /// </summary>
     public class Vehicle   //Making the class public
     {
-        private int cylindervolume;
-        private int yea;
-        private int maxspeed;
-        private string model;
-        private string type;
-        private string name;
-        private int numberofseatys;
         private int numberofengines;
+        private int cylindervolume;
         private string fueltype;
+        private int numberofseatys;
         private int length;
-        private string color;
+        
 
-        public string Name { get { return name; } set { name = value; } }
-        public string Type { get { return type; } set { type = value; } }
-        public int CylinderVolume { get { return cylindervolume; } set { cylindervolume = value; } }
-        public int Year { get { return yea; } set { yea = value; } }
-        public int MaxSpeed { get { return maxspeed; } set { maxspeed = value; } }
-        public string Model { get { return model; } set { model = value; } }
         public int NumberOfSeats { get { return numberofseatys; } set { numberofseatys = value; } }
-        public int NumberOfEngines { get { return numberofengines; } set { numberofengines = value; } }
+        public int CylinderVolume { get { return cylindervolume; } set { cylindervolume = value; } }
         public string FuelType { get { return fueltype; } set { fueltype = value; } }
+        public int NumberOfEngines { get { return numberofengines; } set { numberofengines = value; } }
         public int Length { get { return length; } set { length = value; } }
-        public string Color { get { return color; } set { color = value; } }
+
+
+        
+        
+        
+        
 
     }
 }

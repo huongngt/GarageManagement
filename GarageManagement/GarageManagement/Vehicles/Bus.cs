@@ -11,6 +11,7 @@ namespace GarageManagement.Vehicles
     /// </summary>
     public class Bus : Vehicle
     {
+        
         //Creating a default constructor
         public Bus(){}
 
