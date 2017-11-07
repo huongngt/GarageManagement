@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace GarageManagement
 {
-    class Program
+     class Program
     {
-        static void Main(string[] args)
+         static void Main(string[] args)
         {
-
-        }
+            GarageHandler ht = new GarageHandler();
+            ht.MainMenu();
+        } 
     }
 }
