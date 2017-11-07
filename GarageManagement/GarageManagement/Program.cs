@@ -10,6 +10,8 @@ namespace GarageManagement
     {
         static void Main(string[] args)
         {
+            GarageCreator gc = new GarageCreator();
+            gc.MainMenu();
         }
     }
 }
