@@ -10,6 +10,7 @@ namespace GarageManagement
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
