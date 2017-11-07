@@ -13,9 +13,11 @@ namespace GarageManagement.Vehicles
     {
         private int yea;
         private int maxspeed;
+        private string model;
 
         public int MaxSpeed { get { return maxspeed; } set { maxspeed = value; } }
         public int Year { get { return yea; } set { yea = value; } }
+        public string Model { get { return model; } set { model = value; } }
         //Creating a default constructor
         public Motorcycle(){}
 
