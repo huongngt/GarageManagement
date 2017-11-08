@@ -16,6 +16,11 @@ namespace GarageManagement
         private int firstEmptySlot;
         private T[] vehicleArray;
 
+        public Garage()
+        {
+
+        }
+
         public Garage(string name, string address, int capacity)
         {
             Capacity = capacity;
@@ -60,18 +65,18 @@ namespace GarageManagement
 
         }
 
-        //public bool Park(T vehicle, int slot)
-        //{
-        //    if (vehicleArray[slot] == null)
-        //    {
-        //        vehicleArray[slot] = vehicle;
-        //        count++;
-        //        return true;
-        //    }
-        //    else
-        //        return false;
+        public bool Park(T vehicle, int slot)
+        {
+            if (vehicleArray[slot] == null)
+            {
+                vehicleArray[slot] = vehicle;
+                count++;
+                return true;
+            }
+            else
+                return false;
 
-        //}
+        }
 
         //public bool Unpark(int slot)
         //{

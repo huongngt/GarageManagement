@@ -13,10 +13,13 @@ namespace GarageManagement
     {
         public void MainMenu()
         {
+
+            Garage<Vehicle> gr = new Garage<Vehicle>();
+
             Menu MainMenu = new Menu();
             MainMenu.Description = "Main Menu:";
-            MainMenu.AddMenuItem("1", "Enter 1 if you want to create a new garage", new Action(() => { CreateGarage(); }));
-            MainMenu.AddMenuItem("2", "Enter 2 if you want to park your vehicle", new Action(() => { Park(); }));
+            MainMenu.AddMenuItem("1", "Enter 1 if you want to create a new garage", new Action(() => { gr=CreateGarage(); }));
+            MainMenu.AddMenuItem("2", "Enter 2 if you want to park your vehicle", new Action(() => { Park(gr); }));
             MainMenu.AddMenuItem("3", "Enter 3 if you want to unpark you vehicle", new Action(() => { Unpark(); }));
             MainMenu.AddMenuItem("4", "Enter 4 if you want to see information about the garage", new Action(() => { List(); }));
             MainMenu.AddMenuItem("5", "Enter 5 if you want to search about vehicle", new Action(() => { Search(); }));
@@ -46,32 +49,43 @@ namespace GarageManagement
             throw new NotImplementedException();
         }
 
-        private static void Park()
+        private static void Park(Garage<Vehicle> gar)
         {
             throw new NotImplementedException();
+
         }
 
-         public static 
-            GarageHandler<Vehicle> CreateGarage()
-        {
-
-           GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
-
+        private static Garage<Vehicle> CreateGarage()
+        {            
             Console.Clear();
-            Console.WriteLine("Please take your time to creat the garage...");
-            Console.Write("what is the name of your garage? ");
+            Console.WriteLine("CREATE A NEW GARAGE");
+            Console.WriteLine("----------------------------------------------------------------------");
+            Console.Write("Please input the name of garage: ");
             string name = Console.ReadLine();
-            Console.Write("Where do you want to create it? ");
+            while (String.IsNullOrEmpty(name))
+            {
+                Console.Write("Name can not be an empty string. Please input again: ");
+                name = Console.ReadLine();
+        }
+
+            Console.Write("Please input the address of garage: ");
             string address = Console.ReadLine();
-            Console.Write("What is the MaxCapacity of the garage? ");
+
+            Console.Write("Please input the capacity of garage: ");
             int capacity;
-            int.TryParse(Console.ReadLine(),out capacity);
-            Garage<Vehicle> gar = gh.CreateGarage(name,  address, capacity);
+            while(!int.TryParse(Console.ReadLine(),out capacity))
+        {
+                Console.Write("Invalid capacity.Please input again: ");
+            }
+
+            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            Garage<Vehicle> gar = gh.CreateGarage(name, address, capacity);
+            Console.WriteLine("--------------New garage---------------");
             Console.WriteLine(gh.PrintGarage(gar));
             //Console.Clear();
             //Console.WriteLine("Your garage name is: {0} and it is located in {1} with MaxCapacity {2}", name, address, capacity);
             Console.ReadLine();
-            return gh;
+            return gar;
         }
 
         private static void Close()
