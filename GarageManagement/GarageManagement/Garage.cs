@@ -60,30 +60,30 @@ namespace GarageManagement
 
         }
 
-        public bool Park(T vehicle, int slot)
-        {
-            if (vehicleArray[slot] == null)
-            {
-                vehicleArray[slot] = vehicle;
-                count++;
-                return true;
-            }
-            else
-                return false;
+        //public bool Park(T vehicle, int slot)
+        //{
+        //    if (vehicleArray[slot] == null)
+        //    {
+        //        vehicleArray[slot] = vehicle;
+        //        count++;
+        //        return true;
+        //    }
+        //    else
+        //        return false;
 
-        }
+        //}
 
-        public bool Unpark(int slot)
-        {
-            if (vehicleArray[slot] != null)
-            {
-                vehicleArray[slot] = null;
-                count--;
-                return true;
-            }
-            else
-                return false;
-        }
+        //public bool Unpark(int slot)
+        //{
+        //    if (vehicleArray[slot] != null)
+        //    {
+        //        vehicleArray[slot] = null;
+        //        count--;
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
 
         public IEnumerator<T> GetEnumerator()
         {
