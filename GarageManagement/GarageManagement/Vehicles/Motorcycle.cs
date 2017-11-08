@@ -7,25 +7,32 @@ using System.Threading.Tasks;
 namespace GarageManagement.Vehicles
 {
     /// <summary>
-    /// 
+    ///Subclass that inherites from the vehicle and add a new properity. 
     /// </summary>
     public class Motorcycle : Vehicle
     {
 
+        private int cylinderVolume;
+
+        public int CylinderVolume
+        {
+            get { return cylinderVolume; }
+            set { cylinderVolume = value; }
+        }
+
+
+
         //Creating a default constructor
         public Motorcycle(){}
 
-        public Motorcycle( int cyl, int yea, int maxs, string mod)
+        public Motorcycle(int reg, string col, int nw, int cyli) : base(reg, col, nw)
         {
-            CylinderVolume = cyl;
-            Year = yea;
-            MaxSpeed = maxs;
-            Model = mod;
+            CylinderVolume = cyli;
         }
         public string PrintMotorcycle()
         {
-            return "\nIt is: " + Model + "Motorcycle's" + "Model: "+ Model  + "\nThe cylinder volume = " + CylinderVolume +
-                "\nAnd the MaxSpeed is: " + MaxSpeed;
+            return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
+                 "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd the cylinder volume is: " + CylinderVolume + ".";
         }
     }
 }

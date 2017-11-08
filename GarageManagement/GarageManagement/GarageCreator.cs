@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GarageManagement
 {
+    /// <summary>
+    /// This class hold the MainMenu
+    /// </summary>
     public class GarageCreator
     {
         public void MainMenu()
