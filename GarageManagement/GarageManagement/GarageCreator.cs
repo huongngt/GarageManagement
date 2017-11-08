@@ -53,11 +53,25 @@ namespace GarageManagement
 
         private static GarageHandler<Vehicle> CreateGarage()
         {
-            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
-            Garage<Vehicle> gar = gh.CreateGarage("Liljeholmen", "Stockholm", 100);
-            Console.WriteLine(gh.PrintGarage(gar));
+
+
+            Array[] cg = new Array[100];
+            Console.WriteLine("Please take a time to creat a garage");
+            string input = " ";
+            input = Console.ReadLine();
+            Console.WriteLine("What is the name of your garage? ");
+            Console.WriteLine("Where do you want to creat your garage? ");
+            Console.WriteLine("Which is the max capacity you want your garage to have? ");
             Console.ReadLine();
-            return gh;
+
+
+            
+            return cg;
+            //GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            //Garage<Vehicle> gar = gh.CreateGarage("Liljeholmen", "Stockholm", 100);
+            //Console.WriteLine(gh.PrintGarage(gar));
+            //Console.ReadLine();
+            //return gh;
         }
 
         private static void Close()
