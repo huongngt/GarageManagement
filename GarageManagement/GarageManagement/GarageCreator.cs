@@ -51,27 +51,27 @@ namespace GarageManagement
             throw new NotImplementedException();
         }
 
-        private static GarageHandler<Vehicle> CreateGarage()
+         public static 
+            GarageHandler<Vehicle> CreateGarage()
         {
 
+           GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
 
-            Array[] cg = new Array[100];
-            Console.WriteLine("Please take a time to creat a garage");
-            string input = " ";
-            input = Console.ReadLine();
-            Console.WriteLine("What is the name of your garage? ");
-            Console.WriteLine("Where do you want to creat your garage? ");
-            Console.WriteLine("Which is the max capacity you want your garage to have? ");
+            Console.Clear();
+            Console.WriteLine("Please take your time to creat the garage...");
+            Console.Write("what is the name of your garage? ");
+            string name = Console.ReadLine();
+            Console.Write("Where do you want to create it? ");
+            string address = Console.ReadLine();
+            Console.Write("What is the MaxCapacity of the garage? ");
+            int capacity;
+            int.TryParse(Console.ReadLine(),out capacity);
+            Garage<Vehicle> gar = gh.CreateGarage(name,  address, capacity);
+            Console.WriteLine(gh.PrintGarage(gar));
+            //Console.Clear();
+            //Console.WriteLine("Your garage name is: {0} and it is located in {1} with MaxCapacity {2}", name, address, capacity);
             Console.ReadLine();
-
-
-            
-            return cg;
-            //GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
-            //Garage<Vehicle> gar = gh.CreateGarage("Liljeholmen", "Stockholm", 100);
-            //Console.WriteLine(gh.PrintGarage(gar));
-            //Console.ReadLine();
-            //return gh;
+            return gh;
         }
 
         private static void Close()
