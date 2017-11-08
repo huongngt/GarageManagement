@@ -51,14 +51,26 @@ namespace GarageManagement
 
         private static void Park(Garage<Vehicle> gar)
         {
-            throw new NotImplementedException();
+            List<string> pa = new List<string>();
+            Console.Clear();
+            Console.WriteLine("                       IT IS PARKERING TIME");
+            Console.WriteLine("----------------------------------------------------------------------");
+            Console.WriteLine("Please tell us what dou you want to park? " +
+                "\n1) Airplane." + "\n2) Boat."+"\n3) Car."+ "\n4) Motorcycle.");
+            Console.Write(" \nVehicle is: ");
+            string value = Console.ReadLine();
+            pa.Add(value);
+            foreach (var item in pa) { Console.WriteLine("\nYour: " + item + " now parked."
+                + "\nPlease notice that our park has totaly {0} parkering places," +
+                "and still {1} free places of them.", pa.Capacity, pa.Capacity - pa.Count); }
+            Console.ReadLine();
+             
 
         }
-
         private static Garage<Vehicle> CreateGarage()
         {            
             Console.Clear();
-            Console.WriteLine("CREATE A NEW GARAGE");
+            Console.WriteLine("                       CREATE A NEW GARAGE");
             Console.WriteLine("----------------------------------------------------------------------");
             Console.Write("Please input the name of garage: ");
             string name = Console.ReadLine();
@@ -80,10 +92,8 @@ namespace GarageManagement
 
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Garage<Vehicle> gar = gh.CreateGarage(name, address, capacity);
-            Console.WriteLine("--------------New garage---------------");
+            Console.WriteLine("\n--------------New garage---------------");
             Console.WriteLine(gh.PrintGarage(gar));
-            //Console.Clear();
-            //Console.WriteLine("Your garage name is: {0} and it is located in {1} with MaxCapacity {2}", name, address, capacity);
             Console.ReadLine();
             return gar;
         }
