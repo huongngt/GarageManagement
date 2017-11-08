@@ -130,6 +130,7 @@ namespace GarageManagement
                 }
             }
         }
+
         private static Garage<Vehicle> CreateGarage()
         {            
             Console.Clear();
