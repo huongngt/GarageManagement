@@ -44,25 +44,25 @@ namespace GarageManagement
             return garage.Count;
         }
 
-        //public string ParkVehicle(Garage<T> garage, T vehicle, int slot=0)
-        //{
-        //    string message = "";
-        //    if (slot < 0 || slot > garage.Capacity)
-        //    {
-        //        message = "The position you want to park is not existed";
-        //        Console.ReadLine();
-        //        return message;
-        //    }
-        //    else if (slot ==0)
-        //    {
-        //        slot = garage.FirstEmptySlot;
-        //    }
-        //    if (garage.Park(vehicle, slot))
-        //        message = "Parked successfully";
-        //    else
-        //        message = "The slot you want to park is not empty.";
-        //    return message;
-        //}
+        public string ParkVehicle(Garage<T> garage, T vehicle, int slot = 0)
+        {
+            string message = "";
+            if (slot < 0 || slot > garage.Capacity)
+            {
+                message = "The position you want to park is not existed";
+                Console.ReadLine();
+                return message;
+            }
+            else if (slot == 0)
+            {
+                slot = garage.FirstEmptySlot;
+            }
+            if (garage.Park(vehicle, slot))
+                message = "Parked successfully";
+            else
+                message = "The slot you want to park is not empty.";
+            return message;
+        }
 
         public Garage<T> CreateGarage(string name, string address, int capacity)
         {
@@ -79,6 +79,7 @@ namespace GarageManagement
                 "\nNumber of empty slots: " + (garage.Capacity - garage.Count);
         }
 
+        
 
 
 
