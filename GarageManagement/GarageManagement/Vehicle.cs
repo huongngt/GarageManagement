@@ -9,26 +9,26 @@ namespace GarageManagement
     /// <summary>
     /// It holds the subclasses
     /// </summary>
-    public class Vehicle   //Making the class public
+    public class Vehicle    
     {
-        private int numberofengines;
-        private int cylindervolume;
-        private string fueltype;
-        private int numberofseatys;
-        private int length;
-        
 
-        public int NumberOfSeats { get { return numberofseatys; } set { numberofseatys = value; } }
-        public int CylinderVolume { get { return cylindervolume; } set { cylindervolume = value; } }
-        public string FuelType { get { return fueltype; } set { fueltype = value; } }
-        public int NumberOfEngines { get { return numberofengines; } set { numberofengines = value; } }
-        public int Length { get { return length; } set { length = value; } }
+        private int registrationNumber;
+        private string color;
+        private int numberOfWheels;
 
 
-        
-        
-        
-        
+        public int RegistrationNumber {get { return registrationNumber; }set { registrationNumber = value; }}
+        public string Color {get { return color; }set { color = value; }}
+        public int NumberOfWheels {get { return numberOfWheels; }set { numberOfWheels = value; }}
 
+        //Default constructor
+        public Vehicle(){}
+
+        public Vehicle( int reg, string col, int nw)
+        {
+            RegistrationNumber = reg;
+            Color = col;
+            NumberOfWheels = nw;
+        }     
     }
 }

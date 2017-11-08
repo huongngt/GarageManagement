@@ -7,26 +7,32 @@ using System.Threading.Tasks;
 namespace GarageManagement.Vehicles
 {
     /// <summary>
-    /// 
+    /// Subclass that inherites from the vehicle and add a new properity.
     /// </summary>
     public class Bus : Vehicle
     {
-        
+
+        private int numberOfSeats;
+
+        public int NumberOfSeats
+        {
+            get { return numberOfSeats; }
+            set { numberOfSeats = value; }
+        }
+
+
         //Creating a default constructor
         public Bus(){}
 
-        public Bus( int cyl, string fuelt, int nums, int leng)
+        public Bus(int reg, string col, int nw, int numofs) : base(reg, col, nw)
         {
-            CylinderVolume = cyl;
-            FuelType = fuelt;
-            NumberOfSeats = nums;
-            Length = leng;
+            NumberOfSeats = numofs;
         }
 
         public string PrintBus()
         {
-            return "\nThe bus has" + NumberOfSeats + " seats" + "\n And it is: " + Length +  
-                "\nThe fuel type is: " + FuelType  + "\nThe cylinder volume = " + CylinderVolume + ".";
+            return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
+                "\nAnd it has" + NumberOfWheels +" Wheels"+ "\nAnd has: "+ NumberOfSeats+ " seats"+ ".";
         }
     }
 }
