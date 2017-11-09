@@ -29,7 +29,7 @@ namespace GarageManagement.Vehicles
             NumberOfSeats = numofs;
         }
 
-        public string PrintBus()
+        public override string ToString()
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                 "\nAnd it has" + NumberOfWheels +" Wheels"+ "\nAnd has: "+ NumberOfSeats+ " seats"+ ".";

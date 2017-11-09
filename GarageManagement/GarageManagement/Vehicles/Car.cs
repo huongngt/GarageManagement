@@ -28,7 +28,7 @@ namespace GarageManagement.Vehicles
         {
             FuelType = fuel;
         }
-        public string PrintCar()
+        public override string ToString()
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                  "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd it goes with: " + FuelType + " as fuel type" + ".";

@@ -29,7 +29,7 @@ namespace GarageManagement.Vehicles
         {
             NumberOfEngines = numof;  
         }
-        public string PrintAirplane()
+        public override string ToString()     
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                  "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd has: " + NumberOfEngines + " engines" + ".";

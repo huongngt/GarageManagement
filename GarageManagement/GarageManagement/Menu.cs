@@ -21,13 +21,25 @@ namespace GarageManagement
             menulist.Add(item);
         }
 
-        public void Display()
+        private void Display()
         {
             Console.Clear();
             Console.WriteLine(Description);
             foreach (var item in menulist)
             {
                 Console.WriteLine(item.Description);
+            }
+        }
+
+        public void ShowMenu()
+        {
+            bool DisplayMenu = true;
+            while (DisplayMenu)
+            {
+                this.Display();
+                string input = Console.ReadLine();
+                if (input == "0") DisplayMenu = false;
+                this.ExecuteEntry(input);
             }
         }
 
