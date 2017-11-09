@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GarageManagement
 {
     /// <summary>
-    /// This class hold the MainMenu
+    /// This class holds the MainMenu
     /// </summary>
     public class GarageCreator
     {
@@ -46,89 +46,90 @@ namespace GarageManagement
 
         private static void Unpark()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            List<string> pa = new List<string>();
+            Console.WriteLine("                       IT IS PARKERING TIME");
+            Console.WriteLine("----------------------------------------------------------------------");
+            Console.WriteLine("Please take your time to find your vehicle to unpark it... ");
+            Console.Write("What is the registration number of your vehicle? ");
+            string userunpark = Console.ReadLine();
+            pa.Add(userunpark);
+            foreach (var item in pa)
+            {
+                Console.WriteLine("Your: " + userunpark + " is ready to unpark."
+                    + "\nPlease notice that our parking has totaly {0} parkering places," +
+                     "and still {1} free places of them.", pa.Capacity, pa.Capacity);
+            }
+            Console.WriteLine("\n--------------Unparked---------------");
+            Console.ReadLine();
+           
         }
 
-        private static void Park(Garage<Vehicle> gar)
+        public void Park(Garage<Vehicle> gar)             //making the method public
         {
+            Console.Clear();
             List<string> pa = new List<string>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
             Console.WriteLine("Please tell us what do you want to park? " +
-                "\n1) Airplane." + "\n2) Boat." + "\n3) Car." + "\n4) Motorcycle."+ "\n0) Return to the MainMenu");
-            bool park = true;
-            while(park)
+                "\n1) Airplane." + "\n2) Boat." + "\n3) Car." + "\n4) Motorcycle.");
+            string userinput = Console.ReadLine();
+            Console.WriteLine("Please answer the below questions...");
+            Console.Write("What is the registration number of the vehicle? ");   //The registration number can be number and letter at the same time, so we use string input!!
+            Console.ReadLine();
+            Console.Write("What is the color of the vehicle? ");
+            Console.ReadLine();
+            Console.Write("How many wheels does the vehicle have? ");
+            int number;
+            while(!int.TryParse(Console.ReadLine(), out number))   //validation the user input to integer.
             {
-                string value = Console.ReadLine();
-                if (value != "" && value != null)
+                Console.Write("Invalid number! Please try again. ");
+            }
+            if (userinput == "1")
+            {
+                userinput = "Airplane";
+                Console.Write("How many engines does your airplane have? ");
+                while(!int.TryParse(Console.ReadLine(), out number))         
                 {
-                    char options = value[0];
-                    //string options = Console.ReadLine();
-                    switch (options)
-                    {
-                        case '1':
-                            Console.Clear();
-                            string userinput1 = value.Substring(1);
-                            Console.Write("What is the registration number of your airplane? ");
-                            Console.ReadLine();
-                            Console.Write("What is the color of your airplane? ");
-                            Console.ReadLine();
-                            Console.Write("How many wheels does your airplane have? ");
-                            Console.ReadLine();
-                            Console.Write("How many engines does your airplane have? ");
-                            Console.ReadLine();
-                            pa.Add(userinput1);
-                            break;
-                        case '2':
-                            Console.Clear();
-                            string userinput2 = value.Substring(1);
-                            Console.Write("What is the registration number of your boat? ");
-                            Console.ReadLine();
-                            Console.Write("What is the color of your boat? ");
-                            Console.ReadLine();
-                            Console.Write("How many wheels does your boat have? ");
-                            Console.ReadLine();
-                            Console.Write("What is the length of your boat? ");
-                            Console.ReadLine();
-                            pa.Add(userinput2);
-                            break;
-                        case '3':
-                            Console.Clear();
-                            string userinput3 = value.Substring(1);
-                            Console.Write("What is the registration number of your car? ");
-                            Console.ReadLine();
-                            Console.Write("What is the color of your car? ");
-                            Console.ReadLine();
-                            Console.Write("How many wheels does your car have? ");
-                            Console.ReadLine();
-                            Console.Write("Which feul type does your car have? ");
-                            Console.ReadLine();
-                            pa.Add(userinput3);
-                            break;
-                        case '4':
-                            Console.Clear();
-                            string userinput4 = value.Substring(1);
-                            Console.Write("What is the registration number of your motorcycle? ");
-                            Console.ReadLine();
-                            Console.Write("What is the color of your motorcycle? ");
-                            Console.ReadLine();
-                            Console.Write("How many wheels does the motorcycle have? ");
-                            Console.ReadLine();
-                            Console.Write("How much cylinder volume does the motorcycle have? ");
-                            Console.ReadLine();
-                            pa.Add(userinput4);
-                            break;
-                        case '0':
-                            return;
-                    }
-                    foreach (var item in pa)
-                    {
-                        Console.WriteLine("\nYour: " + options + " now parked."
-                             + "\nPlease notice that our parking has totaly {0} parkering places," +
-                             "and still {1} free places of them.", pa.Capacity, pa.Capacity - pa.Count);
-                    }
+                    Console.Write("Invalid number! Please try again. ");
+                }
+             }
+            else if (userinput == "2")
+            {
+                userinput = "Boat";
+                Console.Write("What is the length of your boat? ");
+                while(!int.TryParse(Console.ReadLine(), out number))         
+                {
+                    Console.Write("Invalid number! Please try again. ");
                 }
             }
+            else if (userinput == "3")
+            {
+                userinput = "Car";
+                Console.Write("Which fuel type does your car have? ");
+            }
+            else if (userinput == "4")
+            {
+                userinput = "Motorcycle";
+                Console.Write("How much cylinder volume does the motorcycle have? ");
+                while(!int.TryParse(Console.ReadLine(), out number))                    
+                {
+                    Console.WriteLine("Invalid input! Please try again. ");
+                }
+            }
+            else
+            {
+                return;
+            }
+            pa.Add(userinput);
+            foreach (var item in pa)
+            {
+                Console.WriteLine("\nYour: "+ userinput  + " now parked."
+                     + "\nPlease notice that our parking has totaly {0} parkering places," +
+                     "and still {1} free places of them.", pa.Capacity, pa.Capacity - pa.Count);
+            }
+            Console.WriteLine("\n--------------Parked---------------");
+            Console.ReadLine();
         }
 
         private static Garage<Vehicle> CreateGarage()
@@ -150,7 +151,7 @@ namespace GarageManagement
             Console.Write("Please input the capacity of garage: ");
             int capacity;
             while(!int.TryParse(Console.ReadLine(),out capacity))
-        {
+            {
                 Console.Write("Invalid capacity.Please input again: ");
             }
 
