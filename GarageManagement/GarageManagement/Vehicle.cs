@@ -12,19 +12,19 @@ namespace GarageManagement
     public class Vehicle    
     {
 
-        private int registrationNumber;
+        private string registrationNumber;
         private string color;
         private int numberOfWheels;
 
 
-        public int RegistrationNumber {get { return registrationNumber; }set { registrationNumber = value; }}
+        public string RegistrationNumber {get { return registrationNumber; }set { registrationNumber = value; }}
         public string Color {get { return color; }set { color = value; }}
         public int NumberOfWheels {get { return numberOfWheels; }set { numberOfWheels = value; }}
 
         //Default constructor
         public Vehicle(){}
 
-        public Vehicle( int reg, string col, int nw)
+        public Vehicle(string reg, string col, int nw)
         {
             RegistrationNumber = reg;
             Color = col;
