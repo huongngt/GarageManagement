@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GarageManagement.Vehicles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,15 @@ namespace GarageManagement
 
         private static void Search()
         {
+            /*
+              List<Vehicle> pa = new List<Vehicle>();
+            Vehicle item = pa.Find(c = > c.FieldId == "SomeFieldId");
+            
+            */
+
+            
+
+
             throw new NotImplementedException();
         }
 
@@ -68,20 +78,27 @@ namespace GarageManagement
         public void Park(Garage<Vehicle> gar)             //making the method public
         {
             Console.Clear();
-            List<string> pa = new List<string>();
+
+
+            Garage<Vehicle> pa = new Garage<Vehicle>();
+            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+             
+
+            //List<Vehicle> paa = new List<Vehicle>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
             Console.WriteLine("Please tell us what do you want to park? " +
                 "\n1) Airplane." + "\n2) Boat." + "\n3) Car." + "\n4) Motorcycle.");
             string userinput = Console.ReadLine();
-            Console.WriteLine("Please answer the below questions...");
+            Console.WriteLine("Please answer the below questions...\n");
             Console.Write("What is the registration number of the vehicle? ");   //The registration number can be number and letter at the same time, so we use string input!!
-            Console.ReadLine();
+            string reg = Console.ReadLine();
             Console.Write("What is the color of the vehicle? ");
-            Console.ReadLine();
+            string col = Console.ReadLine();
             Console.Write("How many wheels does the vehicle have? ");
+            string nw = Console.ReadLine();
             int number;
-            while(!int.TryParse(Console.ReadLine(), out number))   //validation the user input to integer.
+            while (!int.TryParse(Console.ReadLine(), out number))   //validation the user input to integer.
             {
                 Console.Write("Invalid number! Please try again. ");
             }
@@ -89,11 +106,14 @@ namespace GarageManagement
             {
                 userinput = "Airplane";
                 Console.Write("How many engines does your airplane have? ");
-                while(!int.TryParse(Console.ReadLine(), out number))         
+                string numof = Console.ReadLine();
+                while (!int.TryParse(Console.ReadLine(), out number))         
                 {
                     Console.Write("Invalid number! Please try again. ");
                 }
-             }
+                Airplane a = new Airplane(reg, col, number, number);
+                gh.ParkVehicle(pa, a, 0);
+            } 
             else if (userinput == "2")
             {
                 userinput = "Boat";
@@ -102,12 +122,19 @@ namespace GarageManagement
                 {
                     Console.Write("Invalid number! Please try again. ");
                 }
+                Boat a = new Boat(reg, col, number, number);
+                gh.ParkVehicle(pa, a, 0);
             }
+
             else if (userinput == "3")
             {
                 userinput = "Car";
                 Console.Write("Which fuel type does your car have? ");
+                string fuel = Console.ReadLine();
+                Car a = new Car(reg, col, number, fuel);
+                gh.ParkVehicle(pa, a, 0);
             }
+
             else if (userinput == "4")
             {
                 userinput = "Motorcycle";
@@ -116,19 +143,23 @@ namespace GarageManagement
                 {
                     Console.WriteLine("Invalid input! Please try again. ");
                 }
+                Motorcycle a = new Motorcycle(reg, col, number, number);
+                gh.ParkVehicle(pa, a, 0);
             }
+
             else
             {
                 return;
             }
-            pa.Add(userinput);
-            foreach (var item in pa)
-            {
-                Console.WriteLine("\nYour: "+ userinput  + " now parked."
-                     + "\nPlease notice that our parking has totaly {0} parkering places," +
-                     "and still {1} free places of them.", pa.Capacity, pa.Capacity - pa.Count);
-            }
+           
+            //foreach (var item in pa)
+            //{
+            //    Console.WriteLine("\nYour: "+ userinput  + " now parked."
+            //         + "\nPlease notice that our parking has totaly {0} parkering places," +
+            //         "and still {1} free places of them.", pa.Capacity, pa.Capacity - pa.Count);
+            //}
             Console.WriteLine("\n--------------Parked---------------");
+            
             Console.ReadLine();
         }
 
@@ -143,7 +174,7 @@ namespace GarageManagement
             {
                 Console.Write("Name can not be an empty string. Please input again: ");
                 name = Console.ReadLine();
-        }
+            }
 
             Console.Write("Please input the address of garage: ");
             string address = Console.ReadLine();

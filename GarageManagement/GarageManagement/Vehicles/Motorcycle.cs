@@ -25,7 +25,7 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Motorcycle(){}
 
-        public Motorcycle(int reg, string col, int nw, int cyli) : base(reg, col, nw)
+        public Motorcycle(string reg, string col, int nw, int cyli) : base(reg, col, nw)
         {
             CylinderVolume = cyli;
         }

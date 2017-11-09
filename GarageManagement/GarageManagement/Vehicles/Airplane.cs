@@ -25,7 +25,7 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Airplane(){}
 
-        public Airplane(int reg, string col, int nw, int numof) : base (reg, col, nw)
+        public Airplane(string reg, string col, int nw, int numof) : base (reg, col, nw)
         {
             NumberOfEngines = numof;  
         }

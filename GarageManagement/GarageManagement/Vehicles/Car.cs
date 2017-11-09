@@ -24,7 +24,7 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Car(){}
 
-        public Car(int reg, string col, int nw, string fuel) : base(reg, col, nw)
+        public Car(string reg, string col, int nw, string fuel) : base(reg, col, nw)
         {
             FuelType = fuel;
         }

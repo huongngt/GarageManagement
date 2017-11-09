@@ -23,7 +23,7 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Boat(){}
 
-        public Boat(int reg, string col, int nw, int leng) : base(reg, col, nw)
+        public Boat(string reg, string col, int nw, int leng) : base(reg, col, nw)
         {
             Length = leng;
         }
