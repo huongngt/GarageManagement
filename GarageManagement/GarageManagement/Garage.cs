@@ -13,7 +13,6 @@ namespace GarageManagement
         private string address;
         private int count;
         private int capacity;
-        private int firstEmptySlot;
         private T[] vehicleArray;
 
         public Garage()
@@ -78,17 +77,35 @@ namespace GarageManagement
 
         }
 
-        //public bool Unpark(int slot)
-        //{
-        //    if (vehicleArray[slot] != null)
-        //    {
-        //        vehicleArray[slot] = null;
-        //        count--;
-        //        return true;
-        //    }
-        //    else
-        //        return false;
-        //}
+        public bool Unpark(int slot)
+        {
+            if (vehicleArray[slot] != null)
+            {
+                vehicleArray[slot] = null;
+                count--;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public string List()
+        {
+            string result = "";
+            for (int i = 0; i < Capacity; i++)
+                if (vehicleArray[i] != null)
+                {
+                    result += "Slot " + i + 1 + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
+                    
+                }
+            return result;
+        }
+
+        public int FindIndex(string registrationnumber)
+        {
+            return Array.FindIndex(vehicleArray, x => x != null && x.RegistrationNumber == registrationnumber);
+            
+        }
 
         public IEnumerator<T> GetEnumerator()
         {

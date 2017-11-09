@@ -24,11 +24,11 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Car(){}
 
-        public Car(int reg, string col, int nw, string fuel) : base(reg, col, nw)
+        public Car(string reg, string col, int nw, string fuel) : base(reg, col, nw)
         {
             FuelType = fuel;
         }
-        public string PrintCar()
+        public override string ToString()
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                  "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd it goes with: " + FuelType + " as fuel type" + ".";

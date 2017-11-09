@@ -25,11 +25,11 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Motorcycle(){}
 
-        public Motorcycle(int reg, string col, int nw, int cyli) : base(reg, col, nw)
+        public Motorcycle(string reg, string col, int nw, int cyli) : base(reg, col, nw)
         {
             CylinderVolume = cyli;
         }
-        public string PrintMotorcycle()
+        public override string ToString()
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                  "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd the cylinder volume is: " + CylinderVolume + ".";

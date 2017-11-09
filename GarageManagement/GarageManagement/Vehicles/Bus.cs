@@ -24,12 +24,12 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Bus(){}
 
-        public Bus(int reg, string col, int nw, int numofs) : base(reg, col, nw)
+        public Bus(string reg, string col, int nw, int numofs) : base(reg, col, nw)
         {
             NumberOfSeats = numofs;
         }
 
-        public string PrintBus()
+        public override string ToString()
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                 "\nAnd it has" + NumberOfWheels +" Wheels"+ "\nAnd has: "+ NumberOfSeats+ " seats"+ ".";
