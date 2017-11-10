@@ -95,7 +95,7 @@ namespace GarageManagement
             for (int i = 0; i < Capacity; i++)
                 if (vehicleArray[i] != null)
                 {
-                    result += "Slot " + i + 1 + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
+                    result += "Slot " + (i + 1) + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
                     
                 }
             return result;

@@ -109,7 +109,7 @@ namespace GarageManagement
 
         public string PrintGarage(Garage<T> garage)
         {
-            return "Name: " + garage.Name +
+            return "Name: " +  garage.Name +
                 "\nAdress: " + garage.Address +
                 "\nMaximum capacity: " + garage.Capacity +
                 "\nNumber of ocuppied slots: " + garage.Count +
@@ -118,7 +118,8 @@ namespace GarageManagement
 
         public string ShowList(Garage<Vehicle> gar)
         {
-            return gar.List();
+             return gar.List();
+ 
         }
     }
 }
