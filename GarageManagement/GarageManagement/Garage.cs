@@ -95,7 +95,7 @@ namespace GarageManagement
             for (int i = 0; i < Capacity; i++)
                 if (vehicleArray[i] != null)
                 {
-                    result += "Slot " + i + 1 + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
+                    result += "Slot " + (i + 1) + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
                     
                 }
             return result;
@@ -109,7 +109,11 @@ namespace GarageManagement
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)vehicleArray).GetEnumerator();
+
+            for (int i = 0; i < count; i++)
+            {
+                yield return vehicleArray[i];
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
