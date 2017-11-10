@@ -15,10 +15,6 @@ namespace GarageManagement
         private int capacity;
         private T[] vehicleArray;
 
-        public Garage()
-        {
-
-        }
 
         public Garage(string name, string address, int capacity)
         {
@@ -95,7 +91,7 @@ namespace GarageManagement
             for (int i = 0; i < Capacity; i++)
                 if (vehicleArray[i] != null)
                 {
-                    result += "Slot " + i + 1 + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
+                    result += "Slot " + (i + 1) + "\n" + vehicleArray[i].GetType().Name + "\n" + vehicleArray[i] + "\n"; 
                     
                 }
             return result;
