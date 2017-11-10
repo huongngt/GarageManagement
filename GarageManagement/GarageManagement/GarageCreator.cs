@@ -23,26 +23,39 @@ namespace GarageManagement
             MainMenu.AddMenuItem("1", "Enter 1 if you want to create a new garage", new Action(() => { gr = CreateGarage(); }));
             MainMenu.AddMenuItem("2", "Enter 2 if you want to park your vehicle", new Action(() => { Park(gr); }));
             MainMenu.AddMenuItem("3", "Enter 3 if you want to unpark you vehicle", new Action(() => { Unpark(gr); }));
-            MainMenu.AddMenuItem("4", "Enter 4 if you want to see information about the garage", new Action(() => { List(); }));
-            MainMenu.AddMenuItem("5", "Enter 5 if you want to search about vehicle", new Action(() => { Search(); }));
+            MainMenu.AddMenuItem("4", "Enter 4 if you want to see information about the garage", new Action(() => { List(gr); }));
+            MainMenu.AddMenuItem("5", "Enter 5 if you want to search about vehicle", new Action(() => { Search(gr); }));
             MainMenu.AddMenuItem("0", "Enter 0 to Exit", new Action(() => { Close(); }));
             MainMenu.ShowMenu();
-            }
+            }             //Ready
 
-        private static void Search()
+        private static void Search(Garage<Vehicle> pa)
         {
-            /*
-              List<Vehicle> pa = new List<Vehicle>();
-            Vehicle item = pa.Find(c = > c.FieldId == "SomeFieldId");
             
-            */
-            throw new NotImplementedException();
-        }
+            Console.Clear();
+            Console.WriteLine("                       Please insert the registration number of the vehicle!");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
 
-        private static void List()
-        {
-           
+            //Console.Write("Registration number: ");
+            //string value = Console.ReadLine();
+            //GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            //Console.WriteLine(gh.ga
+
+            Console.ReadLine();
         }
+       
+        private static void List(Garage<Vehicle> gar)
+        {
+            Console.Clear();
+            Console.WriteLine("                       General Information about our garage");
+            Console.WriteLine("----------------------------------------------------------------------");
+            Console.WriteLine(gar.List());
+
+            //Still need to fix list of all vehicles types
+            //chech party.cs line 52 till 56
+            Console.WriteLine("\n--------------Ready---------------");
+            Console.ReadLine();
+        }          //Ready
 
         private static void Unpark(Garage<Vehicle> gar)
         {
@@ -59,7 +72,7 @@ namespace GarageManagement
             Console.WriteLine(un.ShowList(gar));
             Console.ReadLine();
 
-        }
+        }       //ready
 
         public void Park(Garage<Vehicle> gar)             
         {
@@ -128,7 +141,7 @@ namespace GarageManagement
             Console.WriteLine("\n--------------Parked---------------"); 
             Console.WriteLine(gh.ShowList(gar));
             Console.ReadLine();
-         }   //Rea
+         }   //Read
         private static Garage<Vehicle> CreateGarage()
         {            
             Console.Clear();
@@ -159,7 +172,7 @@ namespace GarageManagement
             Console.ReadLine();
             return gar;
 
-        }
+        }     //ready
 
 
         private static void Close()
@@ -172,3 +185,4 @@ namespace GarageManagement
 
     }
 }
+                                                                                                                                                                                                

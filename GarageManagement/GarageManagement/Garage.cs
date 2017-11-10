@@ -107,6 +107,12 @@ namespace GarageManagement
             
         }
 
+        /*
+         * These functions are what lets us implement the IEnumerable interface
+         * The yield return lets the function return multiple times without having to call 
+         * the function again and again.
+         */
+
         public IEnumerator<T> GetEnumerator()
         {
 
