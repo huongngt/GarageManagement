@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace GarageManagement
 {
+    /// <summary>
+    /// Class to abtract the real Garage class
+    /// </summary>
+    /// <typeparam name="T"> vehicle type only</typeparam>
     public class GarageHandler<T> where T : Vehicle
     {
         public void SetName(Garage<T> garage, string name)
@@ -118,12 +122,101 @@ namespace GarageManagement
 
         public string ShowList(Garage<Vehicle> gar)
         {
-             return gar.List();
- 
+             return gar.List(); 
         }
 
-        
+        public string ShowType(Garage<Vehicle> gar)
+        {
+            string result = "";
+            var vlist = gar.OfType<Vehicle>().Where(x => x != null).GroupBy(x => x.GetType().Name).Select(g => new
+            {
+                type = g.Key,
+                count = g.Count()
+            });
+            foreach (var v in vlist)
+            {
+                result += v.type + ": " + v.count + "\n";
 
+            }
+            return result;
+        }
 
+        private void PagingList(List<int> list,int NoPage)
+        {
+            string results = "";
+            for (int i = 0; i < list.Count; i = i + NoPage)
+            {
+                results = "";
+                var items = list.Skip(i).Take(NoPage);
+                for (int j = i; j < i+items.Count(); j++)
+                {
+                    results += (list.ElementAt(j)+1) + ", ";                
+                }
+                Console.Write(results.Substring(0,results.Length-2));
+                Console.ReadLine();
+            }
+        }
+
+        public void ShowEmpty(Garage<Vehicle> gar)
+        {
+            PagingList(gar.ListPos(false), 20);
+        }
+
+        public void ShowOccupied(Garage<Vehicle> gar)
+        {
+            PagingList(gar.ListPos(true), 20);
+        }
+
+        public void FindReg(Garage<Vehicle> gar, string reg)
+        {
+            var vlist = gar.FindVehicleByReg(reg);
+            if (vlist.Count == 0)
+                Console.WriteLine("The vehicle with registration number {0} is not found", reg);
+            else
+            {
+                foreach (var v in vlist)
+                {
+                    Console.WriteLine("Slot: " + (v.Key+1) + "\n" + v.Value);
+                }
+            }            
+        }
+
+        public void FindWheels(Garage<Vehicle> gar, int wheels)
+        {
+            var vlist = gar.FindVehicleByWheels(wheels);
+            if (vlist.Count == 0)
+                Console.WriteLine("Not find any vehicle with {0} wheels ", wheels);
+            else
+            {
+                foreach (var v in vlist)
+                {
+                    Console.WriteLine("Slot: " + (v.Key + 1) + "\n" + v.Value);
+                }
+            }
+        }
+
+        public void FindColor(Garage<Vehicle> gar, string color)
+        {
+            var vlist = gar.FindVehicleByColor(color);
+            if (vlist.Count == 0)
+                Console.WriteLine("Not find any vehicle with {0} wheels ", color);
+            else
+            {
+                foreach (var v in vlist)
+                {
+                    Console.WriteLine("Slot: " + (v.Key + 1) + "\n" + v.Value);
+                }
+            }
+        }
+
+        public void ShowListType(Garage<Vehicle> gar, string typ)
+        {
+            var vlist = gar.OfType<Vehicle>().Where(x => x.GetType().Name.Equals(typ,StringComparison.InvariantCultureIgnoreCase));
+            if (vlist.Count() == 0)
+                Console.WriteLine("Not found any vehicle from the type {0}", typ);
+            else
+                foreach (var v in vlist)
+                    Console.WriteLine(v);                
+        }
     }
 }

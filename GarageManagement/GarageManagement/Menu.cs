@@ -11,6 +11,7 @@ namespace GarageManagement
 
         public List<MenuItem> menulist = new List<MenuItem>();
         public string Description { get; set; }
+        public string Color { get; set; }
 
         public void AddMenuItem(string option, string description, Action action)
         {
@@ -24,6 +25,7 @@ namespace GarageManagement
         private void Display()
         {
             Console.Clear();
+            Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), this.Color, true);
             Console.WriteLine(Description);
             foreach (var item in menulist)
             {
@@ -36,11 +38,11 @@ namespace GarageManagement
             bool DisplayMenu = true;
             while (DisplayMenu)
             {
-                this.Display();
+                this.Display();                
                 string input = Console.ReadLine();
                 if (input == "0") DisplayMenu = false;
                 this.ExecuteEntry(input);
-            }
+            } 
         }
 
         public void ExecuteEntry(string option)
