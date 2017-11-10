@@ -105,7 +105,11 @@ namespace GarageManagement
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)vehicleArray).GetEnumerator();
+
+            for (int i = 0; i < count; i++)
+            {
+                yield return vehicleArray[i];
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

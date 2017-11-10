@@ -24,7 +24,7 @@ namespace GarageManagement
         //Default constructor
         public Vehicle(){}
 
-        public Vehicle(string reg, string col, int nw)
+        public Vehicle( string reg, string col, int nw)
         {
             RegistrationNumber = reg;
             Color = col;
