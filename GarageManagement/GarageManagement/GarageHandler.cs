@@ -44,25 +44,62 @@ namespace GarageManagement
             return garage.Count;
         }
 
-        //public string ParkVehicle(Garage<T> garage, T vehicle, int slot=0)
-        //{
-        //    string message = "";
-        //    if (slot < 0 || slot > garage.Capacity)
-        //    {
-        //        message = "The position you want to park is not existed";
-        //        Console.ReadLine();
-        //        return message;
-        //    }
-        //    else if (slot ==0)
-        //    {
-        //        slot = garage.FirstEmptySlot;
-        //    }
-        //    if (garage.Park(vehicle, slot))
-        //        message = "Parked successfully";
-        //    else
-        //        message = "The slot you want to park is not empty.";
-        //    return message;
-        //}
+        public string ParkVehicle(Garage<T> garage, T vehicle, int slot)
+        {
+            string message = "";
+            if (slot < 0 || slot > garage.Capacity)
+            {
+                message = "The position you want to park is not existed";
+                return message;
+            }
+            else
+            {
+                if (slot == 0)
+                {
+                    slot = garage.FirstEmptySlot + 1;
+                }
+                if (slot == 0)
+                {
+                    message = "The garage is full";
+                    return message;
+                }
+                if (garage.Park(vehicle, slot - 1))
+                    message = "You parked successfully at slot " + slot + "\n" + this.PrintGarage(garage);
+                else
+                    message = "The slot you want to park is not empty.";
+                return message;
+            }
+            
+        }
+
+        public string UnParkVehicle(Garage<T> garage, string reg, int slot)
+        {
+            string message = "";
+            
+            if (slot < 0 || slot > garage.Capacity)
+            {
+                message = "The position you want to unpark is not existed";
+                return message;
+            }
+            else
+            {
+                if (slot == 0)
+                {
+                    slot = garage.FindIndex(reg) + 1;
+                }
+                if (slot == 0)
+                {
+                    message = "The vehicle with the registration number not found";
+                    return message;
+                }
+                if (garage.Unpark(slot - 1))
+                    message = "You unparked successfully at slot " + slot + "\n" + this.PrintGarage(garage);
+                else
+                    message = "The slot you want to unpark is empty.";
+                return message;
+            } 
+            
+        }
 
         public Garage<T> CreateGarage(string name, string address, int capacity)
         {
@@ -72,15 +109,17 @@ namespace GarageManagement
 
         public string PrintGarage(Garage<T> garage)
         {
-            return "Name: " + garage.Name +
+            return "Name: " +  garage.Name +
                 "\nAdress: " + garage.Address +
                 "\nMaximum capacity: " + garage.Capacity +
                 "\nNumber of ocuppied slots: " + garage.Count +
                 "\nNumber of empty slots: " + (garage.Capacity - garage.Count);
         }
 
-
-
-
+        public string ShowList(Garage<Vehicle> gar)
+        {
+             return gar.List();
+ 
+        }
     }
 }

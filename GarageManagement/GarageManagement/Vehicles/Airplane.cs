@@ -25,11 +25,11 @@ namespace GarageManagement.Vehicles
         //Creating a default constructor
         public Airplane(){}
 
-        public Airplane(int reg, string col, int nw, int numof) : base (reg, col, nw)
+        public Airplane(string reg, string col, int nw, int numof) : base (reg, col, nw)
         {
             NumberOfEngines = numof;  
         }
-        public string PrintAirplane()
+        public override string ToString()     
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
                  "\nAnd it has" + NumberOfWheels + " Wheels" + "\nAnd has: " + NumberOfEngines + " engines" + ".";
