@@ -128,7 +128,7 @@ namespace GarageManagement
             Console.WriteLine("\n--------------Parked---------------"); 
             Console.WriteLine(gh.ShowList(gar));
             Console.ReadLine();
-         }
+         }   //Rea
         private static Garage<Vehicle> CreateGarage()
         {            
             Console.Clear();
