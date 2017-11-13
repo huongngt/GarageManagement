@@ -15,11 +15,6 @@ namespace GarageManagement
         private int capacity;
         private T[] vehicleArray;
 
-        public Garage()
-        {
-
-        }
-
         public Garage(string name, string address, int capacity)
         {
             Capacity = capacity;
@@ -101,6 +96,19 @@ namespace GarageManagement
             return result;
         }
 
+        public List<int> ListPos(bool occupied)
+        {
+            List<int> empty = new List<int>();
+            List<int> occupy = new List<int>();
+            for (int i = 0; i < Capacity; i++)
+                if (vehicleArray[i] == null)
+                    empty.Add(i);
+                else
+                    occupy.Add(i);
+            if (occupied) return occupy;
+            else return empty;
+        }
+
 
         public string ListType()
         {
@@ -117,13 +125,21 @@ namespace GarageManagement
         public int FindIndex(string registrationnumber)
         {
             return Array.FindIndex(vehicleArray, x => x != null && x.RegistrationNumber == registrationnumber);
-            
         }
-        //Creating a dictionary to search through the list with the registration number.
-
-        //    public Dictionary<int, T> SearchByreg (string registrationnumber)
+            
+        //public Dictionary<int,T> FindVehicleByReg(string registrationnumber)
         //{
-        //    return SearchByreg;
+        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.RegistrationNumber.Contains(registrationnumber)).ToDictionary(x => x.Index, x => x.vehicle);
+        //}
+
+        //public Dictionary<int, T> FindVehicleByWheels(int numOfWheels)
+        //{
+        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.NumberOfWheels== numOfWheels).ToDictionary(x => x.Index, x => x.vehicle);
+        //}
+
+        //public Dictionary<int, T> FindVehicleByColor(string color)
+        //{
+        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.Color == color).ToDictionary(x => x.Index, x => x.vehicle);
         //}
 
         /*
@@ -134,7 +150,6 @@ namespace GarageManagement
 
         public IEnumerator<T> GetEnumerator()
         {
-
             for (int i = 0; i < count; i++)
             {
                 yield return vehicleArray[i];
