@@ -67,6 +67,12 @@ namespace GarageManagement
                 Console.ReadLine();
                 return;
             }
+            if (gar.Count == gar.Capacity)
+            {
+                Console.WriteLine("Garage is full. Sorry!");
+                Console.ReadLine();
+                return;
+            }
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
@@ -136,6 +142,18 @@ namespace GarageManagement
         {
 
             Console.Clear();
+            if (gar == null)
+            {
+                Console.WriteLine("There is no garage, please create one");
+                Console.ReadLine();
+                return;
+            }
+            if (gar.Count == 0)
+            {
+                Console.WriteLine("Garage is empty. Sorry!");
+                Console.ReadLine();
+                return;
+            }
             List<string> pa = new List<string>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
@@ -186,7 +204,13 @@ namespace GarageManagement
         {
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.Clear();
-            
+            if (gar == null)
+            {
+                Console.WriteLine("There is no garage, please create one");
+                Console.ReadLine();
+                return;
+            }
+
             if (choice == 1)
             {
                 Console.WriteLine("LIST OF VEHICLES");
@@ -218,6 +242,12 @@ namespace GarageManagement
         {
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.Clear();
+            if (gar == null)
+            {
+                Console.WriteLine("There is no garage, please create one");
+                Console.ReadLine();
+                return;
+            }
             Console.WriteLine("SEARCH VEHICLE");
             Console.WriteLine("----------------------------------------------------------------------");
             if (choice == 1)
