@@ -29,6 +29,12 @@ namespace GarageManagement
             RegistrationNumber = reg;
             Color = col;
             NumberOfWheels = nw;
-        }     
+        }
+
+        public override string ToString()
+        {
+            return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
+                 "\nAnd it has" + NumberOfWheels + " Wheels";
+        }
     }
 }

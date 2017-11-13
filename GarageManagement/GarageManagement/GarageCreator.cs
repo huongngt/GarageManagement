@@ -15,7 +15,7 @@ namespace GarageManagement
         public void MainMenu()
         {
             //hardcode just for test
-            Garage<Vehicle> gr = new Garage<Vehicle>("test", "addr", 100);
+            Garage<Vehicle> gr = null;
 
             Menu MainMenu = new Menu();
             MainMenu.Description = "Main Menu:";
@@ -61,6 +61,12 @@ namespace GarageManagement
         private static void Park(Garage<Vehicle> gar)
         {
             Console.Clear();
+            if (gar == null)
+            {
+                Console.WriteLine("There is no garage, please create one");
+                Console.ReadLine();
+                return;
+            }
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
