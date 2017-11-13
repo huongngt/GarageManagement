@@ -121,5 +121,16 @@ namespace GarageManagement
              return gar.List();
  
         }
+
+        public string TypeVehicle (Garage<Vehicle> gar)
+        {
+            return gar.ListType();
+        }
+
+        //public string SearchByReg (Garage<Vehicle> gar, string reg)
+        //{
+        //    return ; 
+        //}
+
     }
 }

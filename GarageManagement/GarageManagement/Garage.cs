@@ -101,11 +101,30 @@ namespace GarageManagement
             return result;
         }
 
+
+        public string ListType()
+        {
+            string resultT = "";
+            var vtype= vehicleArray.Where(x => x != null).Select(x => x.GetType().Name);
+            foreach (var v in vtype)
+            {
+                resultT += v + "|";
+            }
+  
+            return resultT;
+        }
+
         public int FindIndex(string registrationnumber)
         {
             return Array.FindIndex(vehicleArray, x => x != null && x.RegistrationNumber == registrationnumber);
             
         }
+        //Creating a dictionary to search through the list with the registration number.
+
+        //    public Dictionary<int, T> SearchByreg (string registrationnumber)
+        //{
+        //    return SearchByreg;
+        //}
 
         /*
          * These functions are what lets us implement the IEnumerable interface
@@ -125,6 +144,11 @@ namespace GarageManagement
         IEnumerator IEnumerable.GetEnumerator()
         {
             return ((IEnumerable<T>)vehicleArray).GetEnumerator();
+        }
+
+        internal string SearchByreg()
+        {
+            throw new NotImplementedException();
         }
     }
 }

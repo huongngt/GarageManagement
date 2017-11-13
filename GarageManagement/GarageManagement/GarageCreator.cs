@@ -15,8 +15,7 @@ namespace GarageManagement
     {
         public void MainMenu()
         {
-            //hardcode just for test
-            Garage<Vehicle> gr = new Garage<Vehicle>("stock", "swed", 100);
+            Garage<Vehicle> gr = new Garage<Vehicle>();
 
             Menu MainMenu = new Menu();
             MainMenu.Description = "Main Menu:";
@@ -35,13 +34,10 @@ namespace GarageManagement
             Console.Clear();
             Console.WriteLine("                       Please insert the registration number of the vehicle!");
             Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
-
-            //Console.Write("Registration number: ");
-            //string value = Console.ReadLine();
-            //GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
-            //Console.WriteLine(gh.ga
-
+            Console.WriteLine("Please insert the registration number of the vehicle: ");
+            string registrationnummber = Console.ReadLine();
             Console.ReadLine();
+
         }
        
         private static void List(Garage<Vehicle> gar)
@@ -49,11 +45,11 @@ namespace GarageManagement
             Console.Clear();
             Console.WriteLine("                       General Information about our garage");
             Console.WriteLine("----------------------------------------------------------------------");
+            Console.WriteLine("list of all vehicles types currently parked in the garage:\n");
+            Console.WriteLine(gar.ListType());
+            Console.WriteLine("list all the parked vehicles:\n");
             Console.WriteLine(gar.List());
-
-            //Still need to fix list of all vehicles types
-            //chech party.cs line 52 till 56
-            Console.WriteLine("\n--------------Ready---------------");
+            Console.WriteLine("\n--------------Ready---------------");                                      
             Console.ReadLine();
         }          //Ready
 
@@ -72,7 +68,7 @@ namespace GarageManagement
             Console.WriteLine(un.ShowList(gar));
             Console.ReadLine();
 
-        }       //ready
+        }       //Ready
 
         public void Park(Garage<Vehicle> gar)             
         {
@@ -88,10 +84,9 @@ namespace GarageManagement
             string reg = Console.ReadLine();
             Console.Write("What is the color of the vehicle? ");
             string col = Console.ReadLine();
-            Console.Write("How many wheels does the vehicle have? ");
             string nw = Console.ReadLine();
             int number;
-
+            Console.WriteLine("How many wheels does the vehicle have? ");
             while (!int.TryParse(Console.ReadLine(), out number))    
             {
                 Console.Write("Invalid number! Please try again. ");
@@ -100,7 +95,7 @@ namespace GarageManagement
             {
                 userinput = "Airplane";
                 string numof = Console.ReadLine();
-                Console.Write("How many engines does your airplane have? ");
+                Console.WriteLine("How many engines does your airplane have? ");
                 while (!int.TryParse(Console.ReadLine(), out number))         
                 {
                     Console.Write("Invalid number! Please try again. ");
@@ -111,10 +106,10 @@ namespace GarageManagement
             else if (userinput == "2")
             {
                 userinput = "Boat";
-                Console.Write("What is the length of your boat? ");
+                Console.WriteLine("What is the length of your boat? ");
                 while(!int.TryParse(Console.ReadLine(), out number))         
                 {
-                    Console.Write("Invalid number! Please try again. ");
+                    Console.WriteLine("Invalid number! Please try again. ");
                 }
                 Boat a = new Boat(reg, col, number, number);
                 gh.ParkVehicle(gar, a, 0);
@@ -122,7 +117,7 @@ namespace GarageManagement
             else if (userinput == "3")
             {
                 userinput = "Car";
-                Console.Write("Which fuel type does your car have? ");
+                Console.WriteLine("Which fuel type does your car have? ");
                 string fuel = Console.ReadLine();
                 Car a = new Car(reg, col, number, fuel);
                 gh.ParkVehicle(gar, a, 0);
@@ -130,7 +125,7 @@ namespace GarageManagement
             else if (userinput == "4")
             {
                 userinput = "Motorcycle";
-                Console.Write("How much cylinder volume does the motorcycle have? ");
+                Console.WriteLine("How much cylinder volume does the motorcycle have? ");
                 while(!int.TryParse(Console.ReadLine(), out number))                    
                 {
                     Console.WriteLine("Invalid input! Please try again. ");
