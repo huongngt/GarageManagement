@@ -122,7 +122,7 @@ namespace GarageManagement
 
         public string ShowList(Garage<Vehicle> gar)
         {
-             return gar.List(); 
+             return gar.List();
         }
 
         public string ShowType(Garage<Vehicle> gar)
@@ -169,7 +169,7 @@ namespace GarageManagement
 
         public void FindVehicleByReg(Garage<Vehicle> gar, string reg)
         {
-            var vlist= gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.RegistrationNumber.Contains(reg)).ToDictionary(x => x.Index, x => x.vehicle);
+            var vlist = gar.FindByReg(reg);                
             if (vlist.Count == 0)
                 Console.WriteLine("The vehicle with registration number {0} is not found", reg);
             else
@@ -183,7 +183,7 @@ namespace GarageManagement
 
         public void FindVehicleByWheels(Garage<Vehicle> gar, int numOfWheels)
         {
-            var vlist = gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.NumberOfWheels == numOfWheels).ToDictionary(x => x.Index, x => x.vehicle);
+            var vlist = gar.FindByWheels(numOfWheels);                
             if (vlist.Count == 0)
                 Console.WriteLine("Not find any vehicle with {0} wheels ", numOfWheels);
             else
@@ -197,7 +197,7 @@ namespace GarageManagement
 
         public void FindVehicleByColor(Garage<Vehicle> gar, string color)
         {
-            var vlist = gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.Color == color).ToDictionary(x => x.Index, x => x.vehicle);
+            var vlist = gar.FindByColor(color);
             if (vlist.Count == 0)
                 Console.WriteLine("Not find any vehicle with {0} wheels ", color);
             else

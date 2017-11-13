@@ -31,8 +31,7 @@ namespace GarageManagement.Vehicles
 
         public override string ToString()
         {
-            return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +
-                "\nAnd it has" + NumberOfWheels +" Wheels"+ "\nAnd has: "+ NumberOfSeats+ " seats"+ ".";
+            return base.ToString() + "\nAnd has: "+ NumberOfSeats+ " seats"+ ".";
         }
     }
 }

@@ -114,20 +114,20 @@ namespace GarageManagement
             return Array.FindIndex(vehicleArray, x => x != null && x.RegistrationNumber == registrationnumber);            
         }
 
-        //public Dictionary<int,T> FindVehicleByReg(string registrationnumber)
-        //{
-        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.RegistrationNumber.Contains(registrationnumber)).ToDictionary(x => x.Index, x => x.vehicle);
-        //}
+        public Dictionary<int, T> FindByReg(string registrationnumber)
+        {
+            return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.RegistrationNumber.Contains(registrationnumber)).ToDictionary(x => x.Index, x => x.vehicle);
+        }
 
-        //public Dictionary<int, T> FindVehicleByWheels(int numOfWheels)
-        //{
-        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.NumberOfWheels== numOfWheels).ToDictionary(x => x.Index, x => x.vehicle);
-        //}
+        public Dictionary<int, T> FindByWheels(int numOfWheels)
+        {
+            return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.NumberOfWheels == numOfWheels).ToDictionary(x => x.Index, x => x.vehicle);
+        }
 
-        //public Dictionary<int, T> FindVehicleByColor(string color)
-        //{
-        //    return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.Color == color).ToDictionary(x => x.Index, x => x.vehicle);
-        //}
+        public Dictionary<int, T> FindByColor(string color)
+        {
+            return vehicleArray.Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.Color == color).ToDictionary(x => x.Index, x => x.vehicle);
+        }
 
         public IEnumerator<T> GetEnumerator()
         {
