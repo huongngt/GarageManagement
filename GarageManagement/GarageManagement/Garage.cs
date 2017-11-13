@@ -109,7 +109,6 @@ namespace GarageManagement
             else return empty;
         }
 
-
         public string ListType()
         {
             string resultT = "";

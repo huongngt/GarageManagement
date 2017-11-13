@@ -224,10 +224,5 @@ namespace GarageManagement
             return gar.ListType();
         }
 
-        //public string SearchByReg (Garage<Vehicle> gar, string reg)
-        //{
-        //    return ; 
-        //}
-
     }
 }

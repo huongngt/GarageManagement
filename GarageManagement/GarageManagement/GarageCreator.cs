@@ -27,7 +27,7 @@ namespace GarageManagement
             MainMenu.AddMenuItem("0", "Enter 0 to Exit", new Action(() => { Close(); }));
             MainMenu.Color = "White";
             MainMenu.ShowMenu();
-            }             //Ready
+            }             
 
         #region SubMenu
         private static void Search(Garage<Vehicle> gar)
@@ -55,7 +55,9 @@ namespace GarageManagement
             SubMenu.Color = "Yellow";
             SubMenu.ShowMenu();
         }
+        #endregion
 
+        #region methods
         private static void Park(Garage<Vehicle> gar)
         {
             Console.Clear();
@@ -140,9 +142,7 @@ namespace GarageManagement
             Console.WriteLine(un.ShowList(gar));
             Console.ReadLine();
         }
-        #endregion
 
-        #region methods
         private static Garage<Vehicle> CreateGarage()
         {
             Console.Clear();
@@ -174,7 +174,7 @@ namespace GarageManagement
             return gar;
 
 
-        }       //Ready
+        }       
 
         private static void DisplayList(Garage<Vehicle> gar, int choice)
         {
@@ -206,7 +206,7 @@ namespace GarageManagement
                 gh.ShowOccupied(gar);
             }
             Console.ReadLine();
-         }   //Read
+         }   
 
         private static void Search(Garage<Vehicle> gar, int choice)
         {
@@ -260,7 +260,6 @@ namespace GarageManagement
             }
             Console.ReadLine();
         }
-
 
         private static void Close()
         {
