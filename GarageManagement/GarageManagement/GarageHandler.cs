@@ -48,6 +48,12 @@ namespace GarageManagement
             return garage.Count;
         }
 
+        public Garage<T> CreateGarage(string name, string address, int capacity)
+        {
+            Garage<T> garage = new Garage<T>(name, address, capacity);
+            return garage;
+        }
+
         public string ParkVehicle(Garage<T> garage, T vehicle, int slot)
         {
             string message = "";
@@ -73,13 +79,13 @@ namespace GarageManagement
                     message = "The slot you want to park is not empty.";
                 return message;
             }
-            
+
         }
 
         public string UnParkVehicle(Garage<T> garage, string reg, int slot)
         {
             string message = "";
-            
+
             if (slot < 0 || slot > garage.Capacity)
             {
                 message = "The position you want to unpark is not existed";
@@ -101,14 +107,8 @@ namespace GarageManagement
                 else
                     message = "The slot you want to unpark is empty.";
                 return message;
-            } 
-            
-        }
+            }
 
-        public Garage<T> CreateGarage(string name, string address, int capacity)
-        {
-            Garage<T> garage = new Garage<T>(name, address, capacity);
-            return garage;
         }
 
         public string PrintGarage(Garage<T> garage)
@@ -167,13 +167,13 @@ namespace GarageManagement
             PagingList(gar.ListPos(true), 20);
         }
 
-        public void FindReg(Garage<Vehicle> gar, string reg)
+        public void FindVehicleByReg(Garage<Vehicle> gar, string reg)
         {
-            var vlist = gar.FindVehicleByReg(reg);
+            var vlist= gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.RegistrationNumber.Contains(reg)).ToDictionary(x => x.Index, x => x.vehicle);
             if (vlist.Count == 0)
                 Console.WriteLine("The vehicle with registration number {0} is not found", reg);
             else
-            {
+            { 
                 foreach (var v in vlist)
                 {
                     Console.WriteLine("Slot: " + (v.Key+1) + "\n" + v.Value);
@@ -181,11 +181,11 @@ namespace GarageManagement
             }            
         }
 
-        public void FindWheels(Garage<Vehicle> gar, int wheels)
+        public void FindVehicleByWheels(Garage<Vehicle> gar, int numOfWheels)
         {
-            var vlist = gar.FindVehicleByWheels(wheels);
+            var vlist = gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.NumberOfWheels == numOfWheels).ToDictionary(x => x.Index, x => x.vehicle);
             if (vlist.Count == 0)
-                Console.WriteLine("Not find any vehicle with {0} wheels ", wheels);
+                Console.WriteLine("Not find any vehicle with {0} wheels ", numOfWheels);
             else
             {
                 foreach (var v in vlist)
@@ -195,9 +195,9 @@ namespace GarageManagement
             }
         }
 
-        public void FindColor(Garage<Vehicle> gar, string color)
+        public void FindVehicleByColor(Garage<Vehicle> gar, string color)
         {
-            var vlist = gar.FindVehicleByColor(color);
+            var vlist = gar.OfType<Vehicle>().Select((v, i) => new { vehicle = v, Index = i }).Where(x => x.vehicle != null && x.vehicle.Color == color).ToDictionary(x => x.Index, x => x.vehicle);
             if (vlist.Count == 0)
                 Console.WriteLine("Not find any vehicle with {0} wheels ", color);
             else

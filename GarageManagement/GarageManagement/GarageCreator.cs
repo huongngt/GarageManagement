@@ -284,7 +284,7 @@ namespace GarageManagement
                     Console.Write("registration number can not be null.Please input again: ");
                     reg = Console.ReadLine();
                 }
-                gh.FindReg(gar, reg);
+                gh.FindVehicleByReg(gar, reg);
             }
             if (choice == 2)
             {
@@ -305,7 +305,7 @@ namespace GarageManagement
                 {
                     Console.Write("Invalid number of the wheels.Please input again: ");
                 }
-                gh.FindWheels(gar, wheels);
+                gh.FindVehicleByWheels(gar, wheels);
 
             }
             if (choice == 4)
@@ -317,7 +317,7 @@ namespace GarageManagement
                     Console.Write("Vehicle color can not be null.Please input again: ");
                     col = Console.ReadLine();
                 }
-                gh.FindColor(gar, col);
+                gh.FindVehicleByColor(gar, col);
             }
             Console.ReadLine();
         }
