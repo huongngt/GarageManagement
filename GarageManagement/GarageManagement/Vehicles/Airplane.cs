@@ -29,6 +29,13 @@ namespace GarageManagement.Vehicles
         {
             NumberOfEngines = numof;  
         }
+
+        /*
+
+           Polymorphism is the concepts of OOPS which includes method overriding and method overloading. 
+           Virtual and Override keyword are used for method overriding and new keyword is used for method hiding.
+           */
+
         public override string ToString()     
         {
             return "Registration number " + RegistrationNumber + "\nAnd the color: " + Color +

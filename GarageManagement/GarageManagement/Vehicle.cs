@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace GarageManagement
 {
     /// <summary>
-    /// It holds the subclasses
+    /// it holds the share properities that is shared between all vehicles.
     /// </summary>
     public class Vehicle    
     {

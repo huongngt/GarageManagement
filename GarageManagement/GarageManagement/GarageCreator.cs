@@ -41,7 +41,7 @@ namespace GarageManagement
             SubMenu.AddMenuItem("0", "Enter 0 if you want to come back the main menu", new Action(() => { }));
             SubMenu.Color = "Cyan";
             SubMenu.ShowMenu();
-        }
+        }   //Ready
 
         private static void List(Garage<Vehicle> gar)
         {
@@ -54,7 +54,7 @@ namespace GarageManagement
             SubMenu.AddMenuItem("0", "Enter 0 if you want to come back the main menu", new Action(() => { }));
             SubMenu.Color = "Yellow";
             SubMenu.ShowMenu();
-        }
+        }    //Ready
 
         private static void Park(Garage<Vehicle> gar)
         {
@@ -62,7 +62,7 @@ namespace GarageManagement
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.WriteLine("                       IT IS PARKERING TIME");
             Console.WriteLine("----------------------------------------------------------------------");
-            Console.WriteLine("Please tell us what do you want to park? " +
+            Console.WriteLine("Please tell us what do you want to park? \nBy choosing one of the following numbers." +
                 "\n1) Airplane." + "\n2) Boat." + "\n3) Car." + "\n4) Motorcycle.");
             string userinput = Console.ReadLine();
             Console.WriteLine("Please answer the below questions...\n");
@@ -139,7 +139,7 @@ namespace GarageManagement
             Console.WriteLine("\n--------------Unparked---------------");
             Console.WriteLine(un.ShowList(gar));
             Console.ReadLine();
-        }
+        }       //Ready
         #endregion
 
         #region methods
@@ -259,7 +259,7 @@ namespace GarageManagement
                 gh.FindVehicleByColor(gar, col);
             }
             Console.ReadLine();
-        }
+        }        //ready
 
 
         private static void Close()
@@ -267,7 +267,7 @@ namespace GarageManagement
             Console.WriteLine("Thank you and good bye");
             System.Threading.Thread.Sleep(500);
             return;
-        }
+        }     //Ready
         #endregion
 
     }

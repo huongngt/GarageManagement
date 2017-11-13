@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace GarageManagement
 {
-    public class Garage<T> : IEnumerable<T> where T : Vehicle
+    /// <summary>
+    /// A collection of vehicles  and it implemented as a generic collection of vehicles
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class Garage<T> : IEnumerable<T> where T : Vehicle     // limatation of the generic type to be able to write method specifically.
+                                                                  // we use IEnumerable to be able to iterate over an instance of Garage<T>
     {
         private string name;
         private string address;
@@ -161,9 +166,9 @@ namespace GarageManagement
             return ((IEnumerable<T>)vehicleArray).GetEnumerator();
         }
 
-        internal string SearchByreg()
-        {
-            throw new NotImplementedException();
-        }
+        //internal string SearchByreg()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

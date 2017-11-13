@@ -9,6 +9,8 @@ namespace GarageManagement
 {
     /// <summary>
     /// Class to abtract the real Garage class
+    /// it is an extra layer that give us more space and protection when we work 
+    /// with sensetive data
     /// </summary>
     /// <typeparam name="T"> vehicle type only</typeparam>
     public class GarageHandler<T> where T : Vehicle
