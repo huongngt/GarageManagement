@@ -83,7 +83,6 @@ namespace GarageManagement
             SubMenu.Color = "Red";
             SubMenu.ShowMenu();
         }
-
         #endregion
 
         #region methods
@@ -123,13 +122,13 @@ namespace GarageManagement
         {
             int position = 0;
             Vehicle v = CreateVehicle(choice);
-            Console.Write("\nPlease input the position you want to park, or leave empty if you don't have any specific slot: ");
+            Console.Write("\nPlease input the position you want to park, or leave empty/input 0 if you don't have any specific slot: ");
             string input = Console.ReadLine();
             if (!String.IsNullOrEmpty(input))
             {
                 while (!int.TryParse(input, out position))
                 {
-                    Console.Write("Invalid posion.Please input again: ");
+                    Console.Write("Invalid position.Please input again: ");
                     input = Console.ReadLine();
                 }
             }
@@ -329,7 +328,6 @@ namespace GarageManagement
             System.Threading.Thread.Sleep(500);
             return;
         }
-
         #endregion
 
     }
