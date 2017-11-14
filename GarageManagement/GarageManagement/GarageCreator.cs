@@ -15,19 +15,19 @@ namespace GarageManagement
         public void MainMenu()
         {
             //hardcode just for test
-            Garage<Vehicle> gr = null;
+            Garage<Vehicle> gr = new Garage<Vehicle>("test", "addr", 100);
 
             Menu MainMenu = new Menu();
             MainMenu.Description = "Main Menu:";
             MainMenu.AddMenuItem("1", "Enter 1 if you want to create a new garage", new Action(() => { gr = CreateGarage(); }));
             MainMenu.AddMenuItem("2", "Enter 2 if you want to park your vehicle", new Action(() => { Park(gr); }));
-            MainMenu.AddMenuItem("3", "Enter 3 if you want to unpark you vehicle", new Action(() => { Unpark(gr); }));
+            MainMenu.AddMenuItem("3", "Enter 3 if you want to unpark your vehicle", new Action(() => { Unpark(gr); }));
             MainMenu.AddMenuItem("4", "Enter 4 if you want to see information about the garage", new Action(() => { List(gr); }));
             MainMenu.AddMenuItem("5", "Enter 5 if you want to search about vehicle", new Action(() => { Search(gr); }));
             MainMenu.AddMenuItem("0", "Enter 0 to Exit", new Action(() => { Close(); }));
             MainMenu.Color = "White";
             MainMenu.ShowMenu();
-            }             
+        }
 
         #region SubMenu
         private static void Search(Garage<Vehicle> gar)
@@ -55,122 +55,43 @@ namespace GarageManagement
             SubMenu.Color = "Yellow";
             SubMenu.ShowMenu();
         }
-        #endregion
 
-        #region methods
         private static void Park(Garage<Vehicle> gar)
         {
-            Console.Clear();
-            if (gar == null)
-            {
-                Console.WriteLine("There is no garage, please create one");
-                Console.ReadLine();
-                return;
-            }
-            if (gar.Count == gar.Capacity)
-            {
-                Console.WriteLine("Garage is full. Sorry!");
-                Console.ReadLine();
-                return;
-            }
-            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
-            Console.WriteLine("                       IT IS PARKERING TIME");
-            Console.WriteLine("----------------------------------------------------------------------");
-            Console.WriteLine("Please tell us what do you want to park? " +
-                "\n1) Airplane." + "\n2) Boat." + "\n3) Car." + "\n4) Motorcycle.");
-            string userinput = Console.ReadLine();
-            Console.WriteLine("Please answer the below questions...\n");
-            Console.Write("What is the registration number of the vehicle? ");
-            string reg = Console.ReadLine();
-            Console.Write("What is the color of the vehicle? ");
-            string col = Console.ReadLine();
-            string nw = Console.ReadLine();
-            int number;
-            Console.WriteLine("How many wheels does the vehicle have? ");
-            while (!int.TryParse(Console.ReadLine(), out number))
-            {
-                Console.Write("Invalid number! Please try again. ");
-            }
-            if (userinput == "1")
-            {
-                userinput = "Airplane";
-                string numof = Console.ReadLine();
-                Console.WriteLine("How many engines does your airplane have? ");
-                while (!int.TryParse(Console.ReadLine(), out number))
-                {
-                    Console.Write("Invalid number! Please try again. ");
-                }
-                Airplane a = new Airplane(reg, col, number, number);
-                gh.ParkVehicle(gar, a, 0);
-            }
-            else if (userinput == "2")
-            {
-                userinput = "Boat";
-                Console.WriteLine("What is the length of your boat? ");
-                while (!int.TryParse(Console.ReadLine(), out number))
-                {
-                    Console.WriteLine("Invalid number! Please try again. ");
-                }
-                Boat a = new Boat(reg, col, number, number);
-                gh.ParkVehicle(gar, a, 0);
-            }
-            else if (userinput == "3")
-            {
-                userinput = "Car";
-                Console.WriteLine("Which fuel type does your car have? ");
-                string fuel = Console.ReadLine();
-                Car a = new Car(reg, col, number, fuel);
-                gh.ParkVehicle(gar, a, 0);
-            }
-            else if (userinput == "4")
-            {
-                userinput = "Motorcycle";
-                Console.WriteLine("How much cylinder volume does the motorcycle have? ");
-                while (!int.TryParse(Console.ReadLine(), out number))
-                {
-                    Console.WriteLine("Invalid input! Please try again. ");
-                }
-                Motorcycle a = new Motorcycle(reg, col, number, number);
-                gh.ParkVehicle(gar, a, 0);
-            }
-            Console.WriteLine("\n--------------Parked---------------");
-            Console.WriteLine(gh.ShowList(gar));
-            Console.ReadLine();
+            Menu SubMenu = new Menu();
+
+            SubMenu.Description = "Paking Menu:";
+            SubMenu.AddMenuItem("1", "Enter 1 if you want to park an airplane", new Action(() => { AddVehicle(gar, 1); }));
+            SubMenu.AddMenuItem("2", "Enter 2 if you want to park a boat", new Action(() => { AddVehicle(gar, 2); }));
+            SubMenu.AddMenuItem("3", "Enter 3 if you want to park a bus", new Action(() => { AddVehicle(gar, 3); }));
+            SubMenu.AddMenuItem("4", "Enter 4 if you want to park a car", new Action(() => { AddVehicle(gar, 4); }));
+            SubMenu.AddMenuItem("5", "Enter 5 if you want to park a motorcycle", new Action(() => { AddVehicle(gar, 5); }));
+            SubMenu.AddMenuItem("6", "Enter 6 if you want to see parked vehicles", new Action(() => { DisplayList(gar, 1); }));
+            SubMenu.AddMenuItem("0", "Enter 0 if you want to come back main menu", new Action(() => { }));
+            SubMenu.Color = "Green";
+            SubMenu.ShowMenu();
         }
 
         private static void Unpark(Garage<Vehicle> gar)
         {
 
-            Console.Clear();
-            if (gar == null)
-            {
-                Console.WriteLine("There is no garage, please create one");
-                Console.ReadLine();
-                return;
-            }
-            if (gar.Count == 0)
-            {
-                Console.WriteLine("Garage is empty. Sorry!");
-                Console.ReadLine();
-                return;
-            }
-            List<string> pa = new List<string>();
-            Console.WriteLine("                       IT IS PARKERING TIME");
-            Console.WriteLine("----------------------------------------------------------------------");
-            Console.WriteLine("Please take your time to find your vehicle to unpark it... ");
-            Console.Write("What is the registration number of your vehicle? ");
-            string userunpark = Console.ReadLine();
-            GarageHandler<Vehicle> un = new GarageHandler<Vehicle>();
-            Console.WriteLine(un.UnParkVehicle(gar, userunpark, 0));
-            Console.WriteLine("\n--------------Unparked---------------");
-            Console.WriteLine(un.ShowList(gar));
-            Console.ReadLine();
-        }
+            Menu SubMenu = new Menu();
 
+            SubMenu.Description = "Unpark Menu:";
+            SubMenu.AddMenuItem("1", "Enter 1 if you want to unpark your vehicle with resgiter number", new Action(() => { RemoveVehicle(gar, 1); }));
+            SubMenu.AddMenuItem("2", "Enter 2 if you want to unpark your vehicle with slot", new Action(() => { RemoveVehicle(gar, 2); }));
+            SubMenu.AddMenuItem("3", "Enter 3 if you want to see parked vehicles", new Action(() => { DisplayList(gar, 1); }));
+            SubMenu.AddMenuItem("0", "Enter 0 if you want to come back the main menu", new Action(() => { }));
+            SubMenu.Color = "Red";
+            SubMenu.ShowMenu();
+        }
+        #endregion
+
+        #region methods
         private static Garage<Vehicle> CreateGarage()
         {
             Console.Clear();
-            Console.WriteLine("                       CREATE A NEW GARAGE");
+            Console.WriteLine("CREATE A NEW GARAGE");
             Console.WriteLine("----------------------------------------------------------------------");
             Console.Write("Please input the name of garage: ");
             string name = Console.ReadLine();
@@ -192,30 +113,141 @@ namespace GarageManagement
 
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Garage<Vehicle> gar = gh.CreateGarage(name, address, capacity);
-            Console.WriteLine("\n--------------New garage---------------");
+            Console.WriteLine("--------------New garage---------------");
             Console.WriteLine(gh.PrintGarage(gar));
             Console.ReadLine();
             return gar;
 
+        }
 
-        }       
+        private static void AddVehicle(Garage<Vehicle> gar, int choice)
+        {
+            int position = 0;
+            Vehicle v = CreateVehicle(choice);
+            Console.Write("\nPlease input the position you want to park, or leave empty/input 0 if you don't have any specific slot: ");
+            string input = Console.ReadLine();
+            if (!String.IsNullOrEmpty(input))
+            {
+                while (!int.TryParse(input, out position))
+                {
+                    Console.Write("Invalid position.Please input again: ");
+                    input = Console.ReadLine();
+                }
+            }
+            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            Console.WriteLine(gh.ParkVehicle(gar, v, position));
+            Console.ReadLine();
+        }
+
+        private static Vehicle CreateVehicle(int choice)
+        {
+
+            Console.Clear();
+            Console.WriteLine("ADD A NEW VEHICLE");
+            Console.WriteLine("----------------------------------------------------------------------");
+            Console.Write("Enter the registration number:");
+            string reg = Console.ReadLine();
+            while (String.IsNullOrEmpty(reg))
+            {
+                Console.Write("registration number can not be null.Please input again: ");
+                reg = Console.ReadLine();
+            }
+            Console.Write("Enter the color:");
+            string col = Console.ReadLine();
+
+            Console.Write("Enter the number of wheels:");
+            int nw;
+            while (!int.TryParse(Console.ReadLine(), out nw))
+            {
+                Console.Write("Invalid number of wheels.Please input again: ");
+            }
+            if (choice == 1)
+            {
+                Console.Write("Enter the number of engine:");
+                int numof;
+                while (!int.TryParse(Console.ReadLine(), out numof))
+                {
+                    Console.Write("Invalid number of engine.Please input again: ");
+                }
+                Airplane air = new Airplane(reg, col, nw, numof);
+                return air;
+            }
+            else if (choice == 2)
+            {
+                Console.Write("Enter the length of boat:");
+                int leng;
+                while (!int.TryParse(Console.ReadLine(), out leng))
+                {
+                    Console.Write("Invalid length of boat.Please input again: ");
+                }
+                Boat boat = new Boat(reg, col, nw, leng);
+                return boat;
+            }
+            else if (choice == 3)
+            {
+                Console.Write("Enter the number of seat:");
+                int seat;
+                while (!int.TryParse(Console.ReadLine(), out seat))
+                {
+                    Console.Write("Invalid number of seat.Please input again: ");
+                }
+                Bus bus = new Bus(reg, col, nw, seat);
+                return bus;
+            }
+            else if (choice == 4)
+            {
+                Console.Write("Enter the fuel type:");
+                string fuel = Console.ReadLine();
+                Car car = new Car(reg, col, nw, fuel);
+                return car;
+            }
+            else
+                Console.Write("Enter the cylinder volume:");
+            int cyli;
+            while (!int.TryParse(Console.ReadLine(), out cyli))
+            {
+                Console.Write("Invalid number of cylinder volume.Please input again: ");
+            }
+            Motorcycle moto = new Motorcycle(reg, col, nw, cyli);
+            return moto;
+
+        }
+
+        private static void RemoveVehicle(Garage<Vehicle> gar, int choice)
+        {
+            Console.Clear();
+            Console.WriteLine("UNPARK YOUR VEHICLE");
+            Console.WriteLine("----------------------------------------------------------------------");
+            GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            if (choice == 1)
+            {
+                Console.Write("Please input the registration number of your vehicle: ");
+                string regis = Console.ReadLine();
+                Console.WriteLine(gh.UnParkVehicle(gar, regis, 0));
+            }
+            else
+            {
+                Console.Write("Please input the slot of your vehicle: ");
+                int slot;
+                while (!int.TryParse(Console.ReadLine(), out slot))
+                {
+                    Console.Write("Invalid number of slot.Please input again: ");
+                }
+                Console.WriteLine(gh.UnParkVehicle(gar, null, slot));
+            }
+            Console.ReadLine();
+        }
 
         private static void DisplayList(Garage<Vehicle> gar, int choice)
         {
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
             Console.Clear();
-            if (gar == null)
-            {
-                Console.WriteLine("There is no garage, please create one");
-                Console.ReadLine();
-                return;
-            }
 
             if (choice == 1)
             {
                 Console.WriteLine("LIST OF VEHICLES");
                 Console.WriteLine("----------------------------------------------------------------------");
-            Console.WriteLine(gh.ShowList(gar));
+                Console.WriteLine(gh.ShowList(gar));
             }
             if (choice == 2)
             {
@@ -236,18 +268,13 @@ namespace GarageManagement
                 gh.ShowOccupied(gar);
             }
             Console.ReadLine();
-         }   
+        }
 
         private static void Search(Garage<Vehicle> gar, int choice)
         {
             GarageHandler<Vehicle> gh = new GarageHandler<Vehicle>();
+            Vehicle v;
             Console.Clear();
-            if (gar == null)
-            {
-                Console.WriteLine("There is no garage, please create one");
-                Console.ReadLine();
-                return;
-            }
             Console.WriteLine("SEARCH VEHICLE");
             Console.WriteLine("----------------------------------------------------------------------");
             if (choice == 1)
@@ -307,4 +334,3 @@ namespace GarageManagement
 
     }
 }
-                                                                                                                                                                                                
