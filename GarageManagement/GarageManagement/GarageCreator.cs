@@ -59,6 +59,7 @@ namespace GarageManagement
         private static void Park(Garage<Vehicle> gar)
         {
             Menu SubMenu = new Menu();
+
             SubMenu.Description = "Paking Menu:";
             SubMenu.AddMenuItem("1", "Enter 1 if you want to park an airplane", new Action(() => { AddVehicle(gar,1); }));
             SubMenu.AddMenuItem("2", "Enter 2 if you want to park a boat", new Action(() => { AddVehicle(gar, 2); }));
@@ -75,6 +76,7 @@ namespace GarageManagement
         {
 
             Menu SubMenu = new Menu();
+
             SubMenu.Description = "Unpark Menu:";
             SubMenu.AddMenuItem("1", "Enter 1 if you want to unpark your vehicle with resgiter number", new Action(() => { RemoveVehicle(gar, 1); }));
             SubMenu.AddMenuItem("2", "Enter 2 if you want to unpark your vehicle with slot", new Action(() => { RemoveVehicle(gar, 2); }));
